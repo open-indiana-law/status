@@ -1,0 +1,13 @@
+name: check
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the hosted MCP (health, a real statute, a real search)
+        run: ./scripts/check.sh
